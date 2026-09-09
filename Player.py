@@ -98,4 +98,7 @@ class Player:
             # Lose a life
             self.loseLife()
 
-
+    # Show Lives and Health
+    def display(self):
+        print ("You have ", self.getLivesLeft(), " remaining lives.")
+        print ("Your health is at: ", self.getHealth())

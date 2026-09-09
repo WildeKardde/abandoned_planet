@@ -9,7 +9,7 @@ import Inventory as inv
 from colorama import init, Fore
 
 # Create player object
-p = Player.player()
+p = Player.Player()
 
 # Initialize colorama
 init()
@@ -31,7 +31,8 @@ def doStart():
         ["B", "Walk towards the beeping"],
         ["D", "Head to the dunes"],
         ["R", "Run!"],
-        ["I", "Inventory"]
+        ["I", "Inventory"],
+        ["M", "My Status"]
     ]
     # Prompt for user action
     choice = Utils.getUserChoice(choices)
@@ -48,6 +49,9 @@ def doStart():
         doRun()
     elif choice == "I":
         inv.display()
+        doStart()
+    elif choice == "M":
+        p.display()
         doStart()
 
 # Location: Boulders
@@ -84,7 +88,8 @@ def doDunes():
         ["C", "Go towards the wreckage"],
         ["B", "Go back near the structure"],
         ["R", "Run!"],
-        ["I", "Inventory"]
+        ["I", "Inventory"],
+        ["M", "My Status"]
     ]
     # Prompt for user action
     choice = Utils.getUserChoice(choices)
@@ -100,6 +105,9 @@ def doDunes():
     elif choice == 'I':
         inv.display()
         doDunes()
+    elif choice == "M":
+        p.display()
+        doDunes()
 
 # Location: Wasteland
 def doWasteland():
@@ -111,7 +119,8 @@ def doWasteland():
         ["C", "Continue moving forward"],
         ["L", "Explore to the left"],
         ["R", "Try moving to the right"],
-        ["I", "Inventory"]
+        ["I", "Inventory"],
+        ["M", "My Status"]
     ]
     # Prompt for user action
     choice = Utils.getUserChoice(choices)
@@ -139,6 +148,9 @@ def doWasteland():
     elif choice == 'I':
         inv.display()
         doWasteland()
+    elif choice == "M":
+        p.display()
+        doWasteland()
 
 # Location: Wasteland Outcropping
 def doWastelandC():
@@ -149,7 +161,8 @@ def doWastelandC():
         ["C", "Continue into the rocky wastelands"],
         ["B", "Return to the Sand Dunes"],
         ["R", "Run!"],
-        ["I", "Inventory"]
+        ["I", "Inventory"],
+        ["M", "My Status"]
     ]
     # Prompt for user action
     choice = Utils.getUserChoice(choices)
@@ -162,6 +175,9 @@ def doWastelandC():
         doRun()
     elif choice == 'I':
         inv.display()
+        doWastelandC()
+    elif choice == 'M':
+        p.display()
         doWastelandC()
 
 # Location: Wasteland Death
@@ -181,7 +197,8 @@ def doCrashsite():
         ["D", "Return to the Sand Dunes"],
         ["S", "Search the wreckage"],
         ["R", "Run!"],
-        ["I", "Inventory"]
+        ["I", "Inventory"],
+        ["M", "My Status"]
         ]
     # Prompt for user action
     choice = Utils.getUserChoice(choices)
@@ -194,6 +211,9 @@ def doCrashsite():
         doRun()
     elif choice == 'I':
         inv.display()
+        doCrashsite()
+    elif choice == 'M':
+        p.display()
         doCrashsite()
 
 # Action: Search Crashsite
@@ -213,7 +233,8 @@ def doStructure():
         ["D", "Open the door"],
         ["B", "Walk towards the beeping"],
         ["R", "Run!"],
-        ["I", "Inventory"]
+        ["I", "Inventory"],
+        ["M", "My Status"]
     ]
     # Prompt for user action
     choice = Utils.getUserChoice(choices)
@@ -228,6 +249,9 @@ def doStructure():
         doRun()
     elif choice == 'I':
         inv.display()
+        doStructure()
+    elif choice == 'M':
+        p.display()
         doStructure()
 
 # Location: Structure door
