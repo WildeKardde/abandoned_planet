@@ -6,20 +6,24 @@
 # Imports
 import Strings, Utils, random, Player
 import Inventory as inv
+from colorama import init, Fore
 
 # Create player object
 p = Player.player()
 
+# Initialize colorama
+init()
+
 # Welcome to the player
 def doWelcome():
     # Display text
-    print(Strings.get("Welcome", Name))
+    print(Fore.GREEN+Strings.get("Welcome", Name))
 
 # Location: Start
 def doStart():
     # Display text
     # Display text
-    print(Strings.get("Start", Name))
+    print(Fore.GREEN+Strings.get("Start", Name))
     # What can the player do?
     choices = [
         ["P", "Examine pile of boulders"],
@@ -52,12 +56,12 @@ def doBoulders():
     p.visitBoulder()
     # Display text
     if p.getBoulderVisits() == 1:
-        print(Strings.get("Boulders", Name))
+        print(Fore.GREEN+Strings.get("Boulders", Name))
     elif p.getBoulderVisits() == 3:
-        print(Strings.get("BouldersKey", Name))
+        print(Fore.CYAN+Strings.get("BouldersKey", Name))
         inv.takeStructureKey()
     else:
-        print(Strings.get("Boulders2", Name))
+        print(Fore.GREEN+Strings.get("Boulders2", Name))
     # Does the player have the key?
     #  if not inv.hasStructureKey():
         # No, display text
@@ -73,7 +77,7 @@ def doBoulders():
 # Location: Dunes
 def doDunes():
     # Display text
-    print(Strings.get("Dunes", Name))
+    print(Fore.GREEN+Strings.get("Dunes", Name))
     # What can the player do?
     choices = [
         ["W", "Continue into the wastes"],
@@ -100,7 +104,7 @@ def doDunes():
 # Location: Wasteland
 def doWasteland():
     # Display text
-    print(Strings.get("Wasteland", Name))
+    print(Fore.GREEN+Strings.get("Wasteland", Name))
     # What can the player do?
     choices = [
         ["B", "Return back the direction think you came from"],
@@ -128,7 +132,7 @@ def doWasteland():
     if choice == 'O':
         doWastelandC()
     elif choice == 'W':
-        print("You move further into the rocky wastes.....does that stone look familiar to you?")
+        print(Fore.GREEN+"You move further into the rocky wastes.....does that stone look familiar to you?")
         doWasteland()
     elif choice == 'D':
         doWastelandD()
@@ -139,7 +143,7 @@ def doWasteland():
 # Location: Wasteland Outcropping
 def doWastelandC():
     # Display text
-    print(Strings.get("WastelandC", Name))
+    print(Fore.GREEN+Strings.get("WastelandC", Name))
     # What can the player do?
     choices = [
         ["C", "Continue into the rocky wastelands"],
@@ -163,14 +167,14 @@ def doWastelandC():
 # Location: Wasteland Death
 def doWastelandD():
     # Display text
-    print(Strings.get("WastelandD", Name))
+    print(Fore.RED+Strings.get("WastelandD", Name))
     gameOver()
 
 # Location: Crashsite
 def doCrashsite():
     # Display text
-    print(Strings.get("Crashsite", Name))
-    print(Strings.get("CrashRations", Name))
+    print(Fore.GREEN+Strings.get("Crashsite", Name))
+    print(Fore.CYAN+Strings.get("CrashRations", Name))
     inv.takeSurvivalRations()
     # What can the player do?
     choices = [
@@ -195,14 +199,14 @@ def doCrashsite():
 # Action: Search Crashsite
 def doCrashSearch():
     # Display text
-    print(Strings.get("CrashCompass", Name))
+    print(Fore.CYAN+Strings.get("CrashCompass", Name))
     inv.takeCompass()
     doCrashsite()
 
 # Location: Structure
 def doStructure():
     # Display text
-    print(Strings.get("Structure", Name))
+    print(Fore.GREEN+Strings.get("Structure", Name))
     # What can the player do?
     choices = [
         ["S", "Back to start"],
@@ -229,11 +233,11 @@ def doStructure():
 # Location: Structure door
 def doStructureDoor():
     # Display text
-    print(Strings.get("StructureDoor", Name))
+    print(Fore.GREEN+Strings.get("StructureDoor", Name))
     if inv.hasStructureKey():
-        print(Strings.get("StructureDoorKey", Name))
+        print(Fore.GREEN+Strings.get("StructureDoorKey", Name))
     else:
-        print(Strings.get("StructureDoorNoKey", Name))
+        print(Fore.RED+Strings.get("StructureDoorNoKey", Name))
     # What can the player do?
     choices = [
         ["S", "Back to structure"],
@@ -260,14 +264,15 @@ def doBeeping():
 # Player ran
 def doRun():
     # Display text
-    print(Strings.get("Run", Name))
+    print(Fore.GREEN+Strings.get("Run", Name))
     p.died()
 # Checks player Lives, returns to start if lives left, game over if not
     doStart() if p.isAlive() else gameOver()
 
 # Game over
 def gameOver():
-    print(Strings.get("GameOver", Name))
+    print(Fore.RED+Strings.get("GameOver", Name))
+    print(Fore.WHITE+"")
 
 # Location: Behind the Structure Door
 def doEnterStructure():

@@ -3,6 +3,9 @@
 # Inventory system
 ########
 
+# Imports
+from colorama import Fore
+
 inv = {
     "StructureKey": False,
     "Compass": False,
@@ -52,16 +55,16 @@ def hasSurvivalRations():
 
 # Display inventory
 def display():
-    print("*** Inventory ***")
-    print("You have", numCoins(), "coins")
+    print(Fore.CYAN+"*** Inventory ***")
+    print(Fore.CYAN+"You have", numCoins(), "coins")
     if hasStructureKey():
-        print("You have a key that flashes blue")
+        print(Fore.CYAN+"You have a key that flashes blue")
     if hasCompass():
-        print("You have a magnetic compass,\n"
+        print(Fore.CYAN+"You have a magnetic compass,\n"
               "the arm sways slightly as you move.")
     if hasSurvivalRations():
-        print("You have a box labeled Survival Gear.\n"
+        print(Fore.CYAN+"You have a box labeled Survival Gear.\n"
               "It contains a canteen of water, some food\n"
               "wafers, and a shiny metallic blanket.")
-    print("*****************")
+    print(Fore.CYAN+"*****************")
 

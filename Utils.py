@@ -3,6 +3,9 @@
 # Utility functions
 ##########
 
+# Imports
+from colorama import Fore
+
 # getUserChoice()
 # Displays a list of options, prompts for an option, and returns it
 # Pass it a list of lists in format [["Letter","Display text"]]
@@ -16,7 +19,7 @@ def getUserChoice(options):
         # Add this one to the valid letters list
         validInputs += opt[0]
         # And display it
-        print(opt[0], "-", opt[1])
+        print(Fore.YELLOW+opt[0], "-", opt[1])
     # Create the prompt
     prompt = "What do you want to do? [" + validInputs + "]: "
     # Initialize variables
@@ -50,10 +53,10 @@ def inputNumber(prompt):
 
 # Yes / No choice function
 def inputYesNo(prompt):
-    print(prompt)
+    print(Fore.YELLOW+prompt)
     # Input variable
     ynchoice = " "
     # Determine if input is valid
     while ynchoice not in ["Y","N"]:
-        ynchoice = input(print("Enter your choice as Y or N")).strip().upper()
+        ynchoice = input(print(Fore.YELLOW+"Enter your choice as Y or N")).strip().upper()
     return ynchoice
