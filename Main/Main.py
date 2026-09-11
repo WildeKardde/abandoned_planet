@@ -6,20 +6,25 @@
 # Imports
 import Strings, Utils, random, Player
 import Inventory as inv
+from colorama import init, Fore
 
 # Create player object
-p = Player.player()
+p = Player.Player()
+
+# Initialize colorama
+init()
 
 # Welcome to the player
 def doWelcome():
     # Display text
-    print(Strings.get("Welcome"))
+    print(Fore.GREEN+Strings.get("Welcome", Name))
 
 # Location: Start
 def doStart():
     # Display text
     # Display text
-    print(Strings.get("Start"))
+    print(Fore.GREEN+Strings.get("Start", Name))
+    healthBar()
     # What can the player do?
     choices = [
         ["P", "Examine pile of boulders"],
@@ -27,7 +32,8 @@ def doStart():
         ["B", "Walk towards the beeping"],
         ["D", "Head to the dunes"],
         ["R", "Run!"],
-        ["I", "Inventory"]
+        ["I", "Inventory"],
+        ["M", "My Status"]
     ]
     # Prompt for user action
     choice = Utils.getUserChoice(choices)
@@ -45,6 +51,9 @@ def doStart():
     elif choice == "I":
         inv.display()
         doStart()
+    elif choice == "M":
+        p.display()
+        doStart()
 
 # Location: Boulders
 def doBoulders():
@@ -52,12 +61,12 @@ def doBoulders():
     p.visitBoulder()
     # Display text
     if p.getBoulderVisits() == 1:
-        print(Strings.get("Boulders"))
+        print(Fore.GREEN+Strings.get("Boulders", Name))
     elif p.getBoulderVisits() == 3:
-        print(Strings.get("BouldersKey"))
+        print(Fore.CYAN+Strings.get("BouldersKey", Name))
         inv.takeStructureKey()
     else:
-        print(Strings.get("Boulders2"))
+        print(Fore.GREEN+Strings.get("Boulders2", Name))
     # Does the player have the key?
     #  if not inv.hasStructureKey():
         # No, display text
@@ -73,14 +82,16 @@ def doBoulders():
 # Location: Dunes
 def doDunes():
     # Display text
-    print(Strings.get("Dunes"))
+    print(Fore.GREEN+Strings.get("Dunes", Name))
+    healthBar()
     # What can the player do?
     choices = [
         ["W", "Continue into the wastes"],
         ["C", "Go towards the wreckage"],
         ["B", "Go back near the structure"],
         ["R", "Run!"],
-        ["I", "Inventory"]
+        ["I", "Inventory"],
+        ["M", "My Status"]
     ]
     # Prompt for user action
     choice = Utils.getUserChoice(choices)
@@ -96,18 +107,25 @@ def doDunes():
     elif choice == 'I':
         inv.display()
         doDunes()
+    elif choice == "M":
+        p.display()
+        doDunes()
 
 # Location: Wasteland
 def doWasteland():
     # Display text
-    print(Strings.get("Wasteland"))
+    print(Fore.GREEN+Strings.get("Wasteland", Name))
+    print(Fore.RED+"The stinging sands and heat make you uncomfortable.")
+    p.loseHealth(5)
+    healthBar()
     # What can the player do?
     choices = [
         ["B", "Return back the direction think you came from"],
         ["C", "Continue moving forward"],
         ["L", "Explore to the left"],
         ["R", "Try moving to the right"],
-        ["I", "Inventory"]
+        ["I", "Inventory"],
+        ["M", "My Status"]
     ]
     # Prompt for user action
     choice = Utils.getUserChoice(choices)
@@ -128,24 +146,29 @@ def doWasteland():
     if choice == 'O':
         doWastelandC()
     elif choice == 'W':
-        print("You move further into the rocky wastes.....does that stone look familiar to you?")
+        print(Fore.GREEN+"You move further into the rocky wastes.....does that stone look familiar to you?")
         doWasteland()
     elif choice == 'D':
         doWastelandD()
     elif choice == 'I':
         inv.display()
         doWasteland()
+    elif choice == "M":
+        p.display()
+        doWasteland()
 
 # Location: Wasteland Outcropping
 def doWastelandC():
     # Display text
-    print(Strings.get("WastelandC"))
+    print(Fore.GREEN+Strings.get("WastelandC", Name))
+    healthBar()
     # What can the player do?
     choices = [
         ["C", "Continue into the rocky wastelands"],
         ["B", "Return to the Sand Dunes"],
         ["R", "Run!"],
-        ["I", "Inventory"]
+        ["I", "Inventory"],
+        ["M", "My Status"]
     ]
     # Prompt for user action
     choice = Utils.getUserChoice(choices)
@@ -159,25 +182,30 @@ def doWastelandC():
     elif choice == 'I':
         inv.display()
         doWastelandC()
+    elif choice == 'M':
+        p.display()
+        doWastelandC()
 
 # Location: Wasteland Death
 def doWastelandD():
     # Display text
-    print(Strings.get("WastelandD"))
+    print(Fore.RED+Strings.get("WastelandD", Name))
     gameOver()
 
 # Location: Crashsite
 def doCrashsite():
     # Display text
-    print(Strings.get("Crashsite"))
-    print(Strings.get("CrashRations"))
+    print(Fore.GREEN+Strings.get("Crashsite", Name))
+    print(Fore.CYAN+Strings.get("CrashRations", Name))
+    healthBar()
     inv.takeSurvivalRations()
     # What can the player do?
     choices = [
         ["D", "Return to the Sand Dunes"],
         ["S", "Search the wreckage"],
         ["R", "Run!"],
-        ["I", "Inventory"]
+        ["I", "Inventory"],
+        ["M", "My Status"]
         ]
     # Prompt for user action
     choice = Utils.getUserChoice(choices)
@@ -191,25 +219,30 @@ def doCrashsite():
     elif choice == 'I':
         inv.display()
         doCrashsite()
+    elif choice == 'M':
+        p.display()
+        doCrashsite()
 
 # Action: Search Crashsite
 def doCrashSearch():
     # Display text
-    print(Strings.get("CrashCompass"))
+    print(Fore.CYAN+Strings.get("CrashCompass", Name))
     inv.takeCompass()
     doCrashsite()
 
 # Location: Structure
 def doStructure():
     # Display text
-    print(Strings.get("Structure"))
+    print(Fore.GREEN+Strings.get("Structure", Name))
+    healthBar()
     # What can the player do?
     choices = [
         ["S", "Back to start"],
         ["D", "Open the door"],
         ["B", "Walk towards the beeping"],
         ["R", "Run!"],
-        ["I", "Inventory"]
+        ["I", "Inventory"],
+        ["M", "My Status"]
     ]
     # Prompt for user action
     choice = Utils.getUserChoice(choices)
@@ -225,15 +258,19 @@ def doStructure():
     elif choice == 'I':
         inv.display()
         doStructure()
+    elif choice == 'M':
+        p.display()
+        doStructure()
 
 # Location: Structure door
 def doStructureDoor():
     # Display text
-    print(Strings.get("StructureDoor"))
+    print(Fore.GREEN+Strings.get("StructureDoor", Name))
+    healthBar()
     if inv.hasStructureKey():
-        print(Strings.get("StructureDoorKey"))
+        print(Fore.GREEN+Strings.get("StructureDoorKey", Name))
     else:
-        print(Strings.get("StructureDoorNoKey"))
+        print(Fore.RED+Strings.get("StructureDoorNoKey", Name))
     # What can the player do?
     choices = [
         ["S", "Back to structure"],
@@ -260,19 +297,38 @@ def doBeeping():
 # Player ran
 def doRun():
     # Display text
-    print(Strings.get("Run"))
-    # Dead, game over
-    gameOver()
+    print(Fore.GREEN+Strings.get("Run", Name))
+    p.died()
+# Checks player Lives, returns to start if lives left, game over if not
+    doStart() if p.isAlive() else gameOver()
 
 # Game over
 def gameOver():
-    print(Strings.get("gameOver"))
+    print(Fore.RED+Strings.get("GameOver", p.livesLeft))
+    print(Fore.WHITE+"")
 
 # Location: Behind the Structure Door
 def doEnterStructure():
     pass
 
+    # Create and return a health bar for display
+def healthBar():
+    healthPerc = p.healthPercent()
+    bar = Utils.barCreate(healthPerc)
+    if healthPerc >= 50:
+        print (Fore.GREEN+bar)
+    elif healthPerc >= 25:
+        print (Fore.YELLOW+bar)
+    else:
+        print (Fore.RED+bar)
+
+
 # Actual game starts here
+
+# Game Prep
+p.setName()
+Name = p.getName()
+
 # Display welcome message
 doWelcome()
 # Game start location
