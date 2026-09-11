@@ -46,7 +46,7 @@ class Player:
     def visitBoulder(self):
         self.boulderVisits += 1
 
-    # Get number of times crash site was visted
+    # Get number of times crash site was visited
     def getCrashsiteVisits(self):
         return self.crashsiteVisits
 
@@ -83,16 +83,16 @@ class Player:
         return self.health
 
     # Add health
-    def addHealth(self, health):
-        self.health += health
+    def addHealth(self, healthChange):
+        self.health += healthChange
         # Make sure not over maxHealth
         if self.health > self.maxHealth:
             # Went too high, reset to max
             self.health = self.maxHealth
 
     # Lose health
-    def loseHealth(self, health):
-        self.health -= health
+    def loseHealth(self, healthChange):
+        self.health -= healthChange
         # Make sure not < 0
         if self.health < 0:
             # Lose a life
@@ -102,3 +102,14 @@ class Player:
     def display(self):
         print ("You have ", self.getLivesLeft(), " remaining lives.")
         print ("Your health is at: ", self.getHealth())
+
+    # Determine Health via percentage of total
+    def healthPercent(self):
+        healthCurrent = self.health
+        healthMax = self.maxHealth
+        hpercent = 100 * (healthCurrent / healthMax)
+        return hpercent
+
+
+
+

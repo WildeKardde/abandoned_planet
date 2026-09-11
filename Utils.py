@@ -60,3 +60,14 @@ def inputYesNo(prompt):
     while ynchoice not in ["Y","N"]:
         ynchoice = input(print(Fore.YELLOW+"Enter your choice as Y or N")).strip().upper()
     return ynchoice
+
+# Create health bar length
+def barCreate(percent):
+    barlength = " "
+    quotient, remainder = divmod(percent, 10)
+    for i in range(int(quotient)):
+        barlength += "+"
+    if remainder >= 5:
+        barlength += "-"
+    return barlength
+

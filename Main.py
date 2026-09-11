@@ -24,6 +24,7 @@ def doStart():
     # Display text
     # Display text
     print(Fore.GREEN+Strings.get("Start", Name))
+    healthBar()
     # What can the player do?
     choices = [
         ["P", "Examine pile of boulders"],
@@ -82,6 +83,7 @@ def doBoulders():
 def doDunes():
     # Display text
     print(Fore.GREEN+Strings.get("Dunes", Name))
+    healthBar()
     # What can the player do?
     choices = [
         ["W", "Continue into the wastes"],
@@ -113,6 +115,9 @@ def doDunes():
 def doWasteland():
     # Display text
     print(Fore.GREEN+Strings.get("Wasteland", Name))
+    print(Fore.RED+"The stinging sands and heat make you uncomfortable.")
+    p.loseHealth(5)
+    healthBar()
     # What can the player do?
     choices = [
         ["B", "Return back the direction think you came from"],
@@ -156,6 +161,7 @@ def doWasteland():
 def doWastelandC():
     # Display text
     print(Fore.GREEN+Strings.get("WastelandC", Name))
+    healthBar()
     # What can the player do?
     choices = [
         ["C", "Continue into the rocky wastelands"],
@@ -191,6 +197,7 @@ def doCrashsite():
     # Display text
     print(Fore.GREEN+Strings.get("Crashsite", Name))
     print(Fore.CYAN+Strings.get("CrashRations", Name))
+    healthBar()
     inv.takeSurvivalRations()
     # What can the player do?
     choices = [
@@ -227,6 +234,7 @@ def doCrashSearch():
 def doStructure():
     # Display text
     print(Fore.GREEN+Strings.get("Structure", Name))
+    healthBar()
     # What can the player do?
     choices = [
         ["S", "Back to start"],
@@ -258,6 +266,7 @@ def doStructure():
 def doStructureDoor():
     # Display text
     print(Fore.GREEN+Strings.get("StructureDoor", Name))
+    healthBar()
     if inv.hasStructureKey():
         print(Fore.GREEN+Strings.get("StructureDoorKey", Name))
     else:
@@ -295,12 +304,24 @@ def doRun():
 
 # Game over
 def gameOver():
-    print(Fore.RED+Strings.get("GameOver", Name))
+    print(Fore.RED+Strings.get("GameOver", p.livesLeft))
     print(Fore.WHITE+"")
 
 # Location: Behind the Structure Door
 def doEnterStructure():
     pass
+
+    # Create and return a health bar for display
+def healthBar():
+    healthPerc = p.healthPercent()
+    bar = Utils.barCreate(healthPerc)
+    if healthPerc >= 50:
+        print (Fore.GREEN+bar)
+    elif healthPerc >= 25:
+        print (Fore.YELLOW+bar)
+    else:
+        print (Fore.RED+bar)
+
 
 # Actual game starts here
 
