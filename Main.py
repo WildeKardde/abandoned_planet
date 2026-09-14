@@ -8,6 +8,8 @@ import Strings, Utils, random, Player
 import Inventory as inv
 from colorama import init, Fore
 
+from CaptainCode_Python import PassGen
+
 # Create player object
 p = Player.Player()
 
@@ -293,6 +295,66 @@ def doStructureDoor():
 # Location: Explore beeping
 def doBeeping():
     pass
+
+# Location: The Shack
+def doShack():
+    # Display Text
+    print(Fore.GREEN+Strings.get("ShackArea", Name))
+    healthBar()
+    # What can the user do?
+    choices = [
+        ["E", "Enter the shack"],
+        ["S", "Return to the Beginning"],
+        ["R", "Run!!"],
+        ["I", "Inventory"],
+        ["M", "My Health Status"]
+    ]
+    # Prompt for user action
+    choice = Utils.getUserChoice(choices)
+    # Perform action
+    if choice == 'E':
+        doShackInterior()
+    elif choice == 'S':
+        doStart()
+    elif choice == 'R':
+        doRun()
+    elif choice == 'I':
+        inv.display()
+        doShack()
+    elif choice == 'M':
+        p.display()
+        doShack()
+
+# Location: Shack Interior
+def doShackInterior():
+    # Display Text
+    print(Fore.GREEN+Strings.get("ShackInterior", Name))
+    healthBar()
+    # What can the user do?
+    choices = [
+        ["E", "Exit the shack"],
+        ["V", "Go to the Vending Machine"],
+        ["R", "Run!!"],
+        ["I", "Inventory"],
+        ["M", "My Health Status"]
+    ]
+    # Prompt for user action
+    choice = Utils.getUserChoice(choices)
+    # Perform action
+    if choice == 'E':
+        doShack()
+    elif choice == 'V':
+        pass
+    elif choice == 'R':
+        doRun()
+    elif choice == 'I':
+        inv.display()
+        doShack()
+    elif choice == 'M':
+        p.display()
+        doShack()
+
+
 
 # Player ran
 def doRun():

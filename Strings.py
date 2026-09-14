@@ -84,5 +84,16 @@ def get(id, CharName):
     elif id == "Boulder2":
         return("\nWhat's with you and boulders?\n"
                "They are still big, heavy, boring boulders.")
+    elif id == "ShackArea":
+        return("\nYou see a heavily weathered and dusty pre-fab shack;\n"
+               "The door lies on the ground near the frame of\n"
+               "The small building.  From within you see a\n"
+               "glowing pale blue light.")
+    elif id == "ShackInterior":
+        return("\nThere is nothing within the shack except\n"
+               "a vending machine that takes up most of the\n"
+               "wall opposite the entry.  It appears to still\n"
+               "be powered and functional.  The display glows\n"
+               "with a pale blue light.")
     else:
         return ""
