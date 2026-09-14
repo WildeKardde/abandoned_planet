@@ -1,5 +1,5 @@
 ########
-# InventoryN.py
+# Inventory.py
 # Inventory system
 ########
 
@@ -7,10 +7,18 @@
 from colorama import Fore
 
 inv = {
-    "StructureKey": False,
     "Compass": False,
-    "Survival Rations": False,
-    "Coins": 0
+    "Kinetic Shield": False,
+    "Laser Blaster": False,
+    "Prybar": False,
+    "Rebreather": False,
+    "StructureKey": False,
+    "Survival Gear Kit": False,
+    "Coins": 0,
+    "Auto-Restore": 0,
+    "Electro-Stun Grenades": 0,
+    "Health Hypospray": 0,
+    "Survival Rations": 0
 }
 
 # Add key to inventory
