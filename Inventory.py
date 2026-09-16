@@ -55,24 +55,112 @@ def hasCompass():
 
 # Add survival rations to inventory
 def takeSurvivalRations():
-    inv["Survival Rations"] = True
+    inv["Survival Rations"] += 1
 
 # Does the player have the survival rations?
 def hasSurvivalRations():
     return inv["Survival Rations"]
 
+# Use Survival Ration
+def dropSurvivalRations():
+    inv["Survival Rations"] -= 1
+
+# Get Survival Kit
+def takeSurvivalKit():
+    inv["Survival Gear Kit"] = True
+
+def hasSurvivalKit():
+    return inv["Survival Gear Kit"]
+
+def dropSurvivalKit():
+    inv["Survival Gear Kit"] = False
+
+# Prybar Functions
+def takePrybar():
+    inv["Prybar"] = True
+
+def hasPrybar():
+    return inv["Prybar"]
+
+# Rebreather Functions
+def takeRebreather():
+    inv["Rebreather"] = True
+
+def hasRebreather():
+    return inv["Rebreather"]
+
+# Kinetic Shield Functions
+def takeShield():
+    inv["Kinetic Shield"] = True
+
+def hasShield():
+    return inv["Kinetic Shield"]
+
+# Laser Blaster functions
+def takeBlaster():
+    inv["Laser Blaster"] = True
+
+def hasBlaster():
+    return inv["Laser Blaster"]
+
+# Auto Restore functions
+def takeRestore():
+    inv["Auto-Restore"] += 1
+
+def hasRestore():
+    return inv["Auto-Restore"]
+
+def dropRestore():
+    inv["Auto-Restore"] -= 1
+
+# Electro-Stun Grenade functions
+def takeGrenade(grens):
+    inv["Electro-Stun Grenades"] += grens
+
+def hasGrenade():
+    return inv["Electro-Stun Grenades"]
+
+def dropGrenade():
+    inv["Electro-Stun Grenades"] -= 1
+
+# Health Hypospray functions
+def takeHypospray():
+    inv["Health Hypospray"] += 1
+
+def hasHypospray():
+    return inv["Health Hypospray"]
+
+def dropHypospray():
+    inv["Health Hypospray"] -= 1
+
 # Display inventory
 def display():
     print(Fore.CYAN+"*** Inventory ***")
-    print(Fore.CYAN+"You have", numCoins(), "coins")
-    if hasStructureKey():
-        print(Fore.CYAN+"You have a key that flashes blue")
     if hasCompass():
         print(Fore.CYAN+"You have a magnetic compass,\n"
               "the arm sways slightly as you move.")
-    if hasSurvivalRations():
-        print(Fore.CYAN+"You have a box labeled Survival Gear.\n"
-              "It contains a canteen of water, some food\n"
-              "wafers, and a shiny metallic blanket.")
+    if hasShield():
+        print(Fore.CYAN+"You have a personal kinetic\n"
+              "Shield generator, helping to keep you safe.")
+    if hasBlaster():
+        print(Fore.CYAN+"You have a Laser Blaster.  The\n"
+                        "Charge Indicator shows it is ready.")
+    if hasPrybar():
+        print(Fore.CYAN+"You have a half-meter long\n"
+              "Titanium prybar.")
+    if hasRebreather():
+        print(Fore.CYAN+"You have a Rebreather, in case\n"
+              "you find yourself submerged in water.")
+    if hasSurvivalKit():
+        print(Fore.CYAN+"You have a Survival Kit from the\n"
+                "Crash Site.  The lid is secure on it,\n"
+                "securing it's contents from you.")
+    if hasStructureKey():
+        print(Fore.CYAN+"You have a key that flashes blue")
+    print(Fore.CYAN+"You have", numCoins(), "coins")
+    print(Fore.CYAN+"You have", hasRestore(), "Auto-Restore systems")
+    print(Fore.CYAN+"You have", hasGrenade(), "Electro-Stun Grenades")
+    print(Fore.CYAN+"You have", hasHypospray(), "Health Hypospray units")
+    print(Fore.CYAN+"You have", hasSurvivalRations(), "Survival food bars")
     print(Fore.CYAN+"*****************")
 
