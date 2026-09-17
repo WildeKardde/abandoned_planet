@@ -375,16 +375,98 @@ def doEnterStructure():
 def doAlkalaiShores():
     # Display Text
     print(Fore.GREEN+Strings.get("AlkalaiShores", Name))
+    healthBar()
+    # What can the user do?
+    choices = [
+        ["D", "Return to the Dunes"],
+        ["W", "Wade into the lake"],
+        ["R", "Run!!"],
+        ["I", "Check your Inventory"],
+        ["M", "My health status"]
+    ]
+    # Prompt user for action
+    choice = Utils.getUserChoice(choices)
+    # Perform action
+    if choice == 'D':
+        doDunes()
+    elif choice == 'W':
+        doAlkalaiShallows()
+    elif choice == 'R':
+        doRun()
+    elif choice == 'I':
+        inv.display()
+        doAlkalaiShores()
+    elif choice == 'M':
+        p.display()
+        doAlkalaiShores()
 
 # Location: Alkalai Lake Shallows
 def doAlkalaiShallows():
     # Display Text
     print(Fore.GREEN+Strings.get("AlkalaiShallow", Name))
+    healthBar()
+    # What can the user do?
+    choices = [
+        ["S", "Return to the shore"],
+        ["D", "Go deeper into the lake"],
+        ["I", "Check your Inventory"],
+        ["M", "My health status"]
+    ]
+    # Prompt user for action
+    choice = Utils.getUserChoice(choices)
+    # Perform action
+    if choice == 'S':
+        doAlkalaiShores()
+    elif choice == 'D':
+        doAlkalaiDeep()
+    elif choice == 'I':
+        inv.display()
+        doAlkalaiShallows()
+    elif choice == 'M':
+        p.display()
+        doAlkalaiShores()
 
 # Location: Alkalai Deep Lake
 def doAlkalaiDeep():
     # Display Text
     print(Fore.GREEN+Strings.get("AlkalaiDeep", Name))
+    healthBar()
+    # What can the user do?
+    choices = [
+        ["S", "Return to the Shallows"],
+        ["D", "Dive!  Dive!"],
+        ["M", "My health status"]
+    ]
+    # Prompt for user action
+    choice = Utils.getUserChoice(choices)
+    # Perform action
+    if choice == 'S':
+        doAlkalaiShallows()
+    elif choice == 'D':
+        doAlkalaiDive()
+    elif choice == "M":
+        p.display()
+        doAlkalaiDeep()
+
+# Location: Alkalai Lake Bed
+def doAlkalaiDive():
+    # Display Text
+    print(Fore.GREEN+Strings.get("AlkalaiDive", Name))
+    healthBar()
+    # What can the user do?
+    choices = [
+        ["S", "Return to the surface"],
+        ["M", "My health status"]
+    ]
+    # Prompt for user action
+    choice = Utils.getUserChoice(choices)
+    # Perform action
+    if choice == 'S':
+        doAlkalaiDeep()
+    elif choice == 'M':
+        p.display()
+        doAlkalaiDive()
+
 
     # Create and return a health bar for display
 def healthBar():

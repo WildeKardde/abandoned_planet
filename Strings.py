@@ -114,6 +114,7 @@ def get(id, CharName):
                "longer find the bottom.  Your suit is heavy enough,\n"
                "and the liquid not dense enough, to keep you\n"
                "on the surface any longer.")
+    elif id == "AlkalaiDive":
         pass
     else:
         return ""
