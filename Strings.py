@@ -30,7 +30,9 @@ def get(id, CharName):
         return ("\nTall sand dunes rise above you.\nClimbing to the "
                 "crest, you see a horizon of broken rocks and more "
                 "dust.\nNear the bottom of the dunes, you see a glint "
-                "of metal inside of a crater.")
+                "of metal inside of a crater.  In the distance opposite\n"
+                "the crater and dusty land, you see a shimmer of \n"
+                "what might be a lake.")
     elif id == "Wasteland":
         return ("\nScattered, broken rocks fill the plain.\nYou see a "
                 "tall outcropping rise above the flat near you.")

@@ -88,6 +88,7 @@ def doDunes():
     choices = [
         ["W", "Continue into the wastes"],
         ["C", "Go towards the wreckage"],
+        ["L", "Go towards the lake"],
         ["B", "Go back near the structure"],
         ["R", "Run!"],
         ["I", "Inventory"],
@@ -100,6 +101,8 @@ def doDunes():
         doWasteland()
     elif choice == "C":
         doCrashsite()
+    elif choice == "L":
+        doAlkalaiShores()
     elif choice == 'B':
         doStart()
     elif choice == 'R':
