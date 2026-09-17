@@ -74,13 +74,18 @@ def get(id, CharName):
         return ("\nYou look closer.  Was that a blue flash?\n"
                 "You reach between the boulders and find ...\n"
                 "It looks like a key, it occasionally flashes blue.")
-    elif id == "CrashCompass":
-        return ("\nAmongst the wreckage you see a glint of glass.\n"
-                "It appears to be a magnetic compass, the\n"
-                "arm swinging slightly.")
-    elif id == "CrashRations":
-        return ("\nPulling a scorched panel off a section of frame,\n"
-                "you find a box marked 'Emergency Supplies'")
+#    elif id == "CrashCompass":
+#        return ("\nAmongst the wreckage you see a glint of glass.\n"
+#                "It appears to be a magnetic compass, the\n"
+#                "arm swinging slightly.")
+#    elif id == "CrashRations":
+#        return ("\nPulling a scorched panel off a section of frame,\n"
+#                "you find a box marked 'Emergency Supplies'")
+    elif id == "CrashKit":
+        return ("\nYou find a metallic box among the wreck.\n"
+                "Stenciled into the side are the words \n"
+                "'Survival Kit Mk3'.  The lid appears to \n"
+                "be crumpled and impossible to open.")
     elif id == "Boulder2":
         return("\nWhat's with you and boulders?\n"
                "They are still big, heavy, boring boulders.")
@@ -95,5 +100,20 @@ def get(id, CharName):
                "wall opposite the entry.  It appears to still\n"
                "be powered and functional.  The display glows\n"
                "with a pale blue light.")
+    elif id == "AlkalaiShores":
+        return("\nYou see a body of...well, liquid anyways...\n"
+               "crashing against a sandy shore, smoothed rocks\n"
+               "amongst the sand.  It has a faint yellow-green\n"
+               "tinge to the water.")
+    elif id == "AlkalaiShallow":
+        return("\nYou wade out into the lake, the cloudiness of\n"
+               "the water making it slow going as you attempt\n"
+               "to stay on your feet.")
+    elif id == "AlkalaiDeep":
+        return("\nYou are far into the lake; your feet can no\n"
+               "longer find the bottom.  Your suit is heavy enough,\n"
+               "and the liquid not dense enough, to keep you\n"
+               "on the surface any longer.")
+        pass
     else:
         return ""

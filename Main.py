@@ -8,8 +8,6 @@ import Strings, Utils, random, Player
 import Inventory as inv
 from colorama import init, Fore
 
-from CaptainCode_Python import PassGen
-
 # Create player object
 p = Player.Player()
 
@@ -198,9 +196,9 @@ def doWastelandD():
 def doCrashsite():
     # Display text
     print(Fore.GREEN+Strings.get("Crashsite", Name))
-    print(Fore.CYAN+Strings.get("CrashRations", Name))
+#    print(Fore.CYAN+Strings.get("CrashRations", Name))
     healthBar()
-    inv.takeSurvivalRations()
+#    inv.takeSurvivalRations()
     # What can the player do?
     choices = [
         ["D", "Return to the Sand Dunes"],
@@ -228,8 +226,8 @@ def doCrashsite():
 # Action: Search Crashsite
 def doCrashSearch():
     # Display text
-    print(Fore.CYAN+Strings.get("CrashCompass", Name))
-    inv.takeCompass()
+    print(Fore.CYAN+Strings.get("CrashKit", Name))
+    inv.takeSurvivalKit()
     doCrashsite()
 
 # Location: Structure
@@ -372,6 +370,21 @@ def gameOver():
 # Location: Behind the Structure Door
 def doEnterStructure():
     pass
+
+# Location: Alkalai Lake Shore
+def doAlkalaiShores():
+    # Display Text
+    print(Fore.GREEN+Strings.get("AlkalaiShores", Name))
+
+# Location: Alkalai Lake Shallows
+def doAlkalaiShallows():
+    # Display Text
+    print(Fore.GREEN+Strings.get("AlkalaiShallow", Name))
+
+# Location: Alkalai Deep Lake
+def doAlkalaiDeep():
+    # Display Text
+    print(Fore.GREEN+Strings.get("AlkalaiDeep", Name))
 
     # Create and return a health bar for display
 def healthBar():
